@@ -96,6 +96,32 @@ function submit() {
   //  -------------------------- validating form details and throwing errors in error ids -------------------
   console.log(formdata.msjid)
   console.log(formdata.names)
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw8RKLAkdzE7Md3RCHcc6JjDfxe8M-2jUvp9R3qzud4EVvE7epnSbsNty8RrZ83pQij/exec'
+  const form = document.forms['submit-to-google-sheet']
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(_response => {
+        document.getElementById("loader").style.display = "none";
+
+        allrt.classList.remove("hidden");
+        allrt.classList.add("visible");
+        almsg.classList.remove("text-dark");
+        almsg.classList.add("text-success");
+        almsg.innerText = `ماشا اللہ لا قو الا باللہ\n مبارک ہو \nآپکی آج کی مکمل تفصیل جمع کر لی گئی ہے`
+      })
+    form.reset()
+      .catch(_error => {
+        document.getElementById("loader").style.display = "none";
+
+        allrt.classList.remove("hidden");
+        allrt.classList.add("visible");
+        almsg.classList.remove("text-dark");
+        almsg.classList.add("text-danger");
+        almsg.innerText = `انالله و انا الیہ راجعون\n ہمیں افسوس ہے ابھی آپکی تفصیل جمع نہیں ہو سکی ہے\n دوبارہ کوشش کریں"`
+      })
+  })
   /*
   if (formdata.name == "0") {
     nmsg.innerHTML = "براہ کرم نام چنیں", window.location.hash = "#current-time", setTimeout(function () {
@@ -147,31 +173,7 @@ function submit() {
 
     // -----------------------form submit script---------------------
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzerlClZ6gC39DDGrCMdduyS3tDjXlr9kWvAkJg-_R2wtFHXfctZV4E2WwiLmyHGRye/exec'
-    const form = document.forms['submit-to-google-sheet']
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(_response => {
-          document.getElementById("loader").style.display = "none";
-
-          allrt.classList.remove("hidden");
-          allrt.classList.add("visible");
-          almsg.classList.remove("text-dark");
-          almsg.classList.add("text-success");
-          almsg.innerText = `ماشا اللہ لا قو الا باللہ\n مبارک ہو \nآپکی آج کی مکمل تفصیل جمع کر لی گئی ہے`
-        })
-      form.reset()
-        .catch(_error => {
-          document.getElementById("loader").style.display = "none";
-
-          allrt.classList.remove("hidden");
-          allrt.classList.add("visible");
-          almsg.classList.remove("text-dark");
-          almsg.classList.add("text-danger");
-          almsg.innerText = `انالله و انا الیہ راجعون\n ہمیں افسوس ہے ابھی آپکی تفصیل جمع نہیں ہو سکی ہے\n دوبارہ کوشش کریں"`
-        })
-    })
+    
     // ------submiting the hidden form-----------
     return sub()
   }
@@ -183,11 +185,11 @@ function sub() {
 
 // --------------------hiding alert box --------------
 
+*/
+}
 function okay() {
   allrt.classList.remove("visible")
   allrt.classList.add("hidden")
   almsg.classList.remove("text-success");
   almsg.classList.remove("text-danger");
-}
-*/
 }
