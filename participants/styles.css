@@ -12,6 +12,10 @@ body {
     word-spacing: 2px;
 }
 
+.center{
+    margin: auto;
+}
+
 hr {
     margin: 1rem 0;
     color: #B2D235;
@@ -152,10 +156,16 @@ option {
     .spinner{
         margin: 40% auto 50% auto;
     }
+    .center{
+        margin: auto;
+    }
 }
 
 @media only screen and (max-width: 600px) {
     .spinner{
         margin: 75% auto 50% auto;
+    }
+    .center{
+        margin: auto;
     }
 }

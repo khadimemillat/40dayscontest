@@ -1,244 +1,103 @@
-// ------------------ geting date and time------------------
+// --------- Breaking day/night --------------
+
+function twoFourBreaker(hour) {
+  let breaker = hour % 12;
+  breaker = breaker ? breaker : 12;
+  return breaker;
+}
+
+// ------------------ showing date and time------------------
 function doDate() {
-  var str = "";
+  let str = "";
 
-  var days = ["اتوار", "سوموار", "منگل", "بدھ", "جمعرات", "جمعہ", "سنیچر"];
-  var months = ["جنوری", "فروری", "مارچ", "اپریل", "مائی", "جون", "جلائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"];
+  let days = ["اتوار", "سوموار", "منگل", "بدھ", "جمعرات", "جمعہ", "سنیچر"];
+  let months = ["جنوری", "فروری", "مارچ", "اپریل", "مائی", "جون", "جلائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"];
 
-  var now = new Date();
+  let now = new Date();
 
-  str += days[now.getDay()] + " / " + now.getDate() + " / " + months[now.getMonth()] + " / " + now.getFullYear() + " - " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+  str += days[now.getDay()] + " / " + now.getDate() + " / " + months[now.getMonth()] + " / " + now.getFullYear() + " - " + twoFourBreaker(now.getHours()) + ":" + now.getMinutes() + ":" + now.getSeconds();
   document.getElementById("current-time").innerHTML = str;
   document.getElementById("time").value = str;
 }
 setInterval(doDate, 1000);
 
-// ----------- masjid name to participants select displaying----------
+// ----------- masjid name to participants select & sbmt btn displaying----------
 
 function visible() {
-  let tabcontents = document.getElementsByClassName("hide");
-  if(document.getElementById("name").value !== ""){
-  for (tabcontent of tabcontents) {
-    tabcontent.classList.remove("show");
-  }
-  document.getElementById("pn").classList.remove("hide");
-  document.getElementById("pn").classList.add("show");
-  document.getElementById(document.getElementById("name").value).classList.add("show");
-}}
-
-// -----------------------displaying and hidng attendance div------------------
-/*
-function clhifz() {
-  document.getElementById("hifz").style.display = "block";
-  document.getElementById("nazra").style.display = "none";
-  document.getElementById("deeniyat").style.display = "none";
-}
-function clnazra() {
-  document.getElementById("nazra").style.display = "block";
-  document.getElementById("hifz").style.display = "none";
-  document.getElementById("deeniyat").style.display = "none";
-}
-function cldeeniyat() {
-  document.getElementById("deeniyat").style.display = "block";
-  document.getElementById("hifz").style.display = "none";
-  document.getElementById("nazra").style.display = "none";
-}
-
-// -------------------enabling and desabling hifz, nazra - attendance checkboxes-------------
-
-function classchk() {
-  if (document.getElementById("missed").checked === true) {
-    document.getElementById("subah").disabled = true;
-    document.getElementById("dopahar").disabled = true;
-    document.getElementById("sham").disabled = true;
-    document.getElementById("hc").disabled = true;
-  }
-  else {
-    document.getElementById("subah").disabled = false;
-    document.getElementById("dopahar").disabled = false;
-    document.getElementById("sham").disabled = false;
-    document.getElementById("hc").disabled = false;
+  let names = document.getElementById("names")
+  let name = document.getElementById("name")
+  let btn = document.getElementById("submiting")
+  if (name.value !== "0") {
+    names.style.display = "block";
+    btn.style.display = "block";
+  } else {
+    names.style.display = "none";
+    btn.style.display = "none";
   }
 }
 
-function ccchk() {
-  if (document.getElementById("hc").checked === true) {
-    document.getElementById("subah").disabled = true;
-    document.getElementById("dopahar").disabled = true;
-    document.getElementById("sham").disabled = true;
-    document.getElementById("missed").disabled = true;
-  }
-  else {
-    document.getElementById("subah").disabled = false;
-    document.getElementById("dopahar").disabled = false;
-    document.getElementById("sham").disabled = false;
-    document.getElementById("missed").disabled = false;
-  }
+// validating parents name to enable when type is selected
+
+function check() {
+  document.querySelector('input[type="radio"]').addEventListener('click')
+
+  document.querySelector('input[name="st1"]:checked') ? document.getElementById("st01").disabled = true : document.getElementById("st01").disabled = false;
+  document.querySelector('input[name="st2"]:checked') ? document.getElementById("st02").disabled = true : document.getElementById("st02").disabled = false;
+  document.querySelector('input[name="st3"]:checked') ? document.getElementById("st03").disabled = true : document.getElementById("st03").disabled = false;
+  document.querySelector('input[name="st4"]:checked') ? document.getElementById("st04").disabled = true : document.getElementById("st04").disabled = false;
+  document.querySelector('input[name="st5"]:checked') ? document.getElementById("st05").disabled = true : document.getElementById("st05").disabled = false;
+
 }
-
-
-function desablemissed() {
-  if (event.currentTarget.checked === true ||
-    document.getElementById("subah").checked === true ||
-    document.getElementById("dopahar").checked === true ||
-    document.getElementById("sham").checked === true ||
-    document.getElementById("hc").checked === true === true) {
-    document.getElementById("missed").disabled = true;
-    document.getElementById("hc").disabled = true;
-  }
-  else {
-    document.getElementById("missed").disabled = false;
-    document.getElementById("hc").disabled = false;
-  }
-}
-
-function desabledmissed() {
-  if (event.currentTarget.checked === true ||
-    document.getElementById("nsubah").checked === true ||
-    document.getElementById("ndopahar").checked === true === true) {
-    document.getElementById("nmissed").disabled = true;
-    document.getElementById("nc").disabled = true;
-  }
-  else {
-    document.getElementById("nmissed").disabled = false;
-    document.getElementById("nc").disabled = false;
-  }
-}
-function desablesd() {
-  if (document.getElementById("nmissed").checked === true) {
-    document.getElementById("nsubah").disabled = true;
-    document.getElementById("ndopahar").disabled = true;
-    document.getElementById("nc").disabled = true;
-  }
-  else {
-    document.getElementById("nsubah").disabled = false;
-    document.getElementById("ndopahar").disabled = false;
-    document.getElementById("nc").disabled = false;
-  }
-}
-
-function desablesdc() {
-  if (document.getElementById("nc").checked === true) {
-    document.getElementById("nsubah").disabled = true;
-    document.getElementById("ndopahar").disabled = true;
-    document.getElementById("nmissed").disabled = true;
-  }
-  else {
-    document.getElementById("nsubah").disabled = false;
-    document.getElementById("ndopahar").disabled = false;
-    document.getElementById("nmissed").disabled = false;
-  }
-}
-*/
-
-// -------------------enabling and desabling namaz checkboxes-------------
-
-function namazcheck() {
-  if (document.getElementById("none").checked == true) {
-    document.getElementById("fajr").disabled = true;
-    document.getElementById("zuhr").disabled = true;
-    document.getElementById("asr").disabled = true;
-    document.getElementById("maghrib").disabled = true;
-    document.getElementById("isha").disabled = true;
-    document.getElementById("vitr").disabled = true;
-  }
-  else {
-    document.getElementById("fajr").disabled = false;
-    document.getElementById("zuhr").disabled = false;
-    document.getElementById("asr").disabled = false;
-    document.getElementById("maghrib").disabled = false;
-    document.getElementById("isha").disabled = false;
-    document.getElementById("vitr").disabled = false;
-  }
-}
-function desableNone() {
-  if (event.currentTarget.checked === true ||
-    document.getElementById("fajr").checked === true ||
-    document.getElementById("zuhr").checked === true ||
-    document.getElementById("asr").checked === true ||
-    document.getElementById("maghrib").checked === true ||
-    document.getElementById("isha").checked === true ||
-    document.getElementById("vitr").checked === true === true) {
-    document.getElementById("none").disabled = true;
-  }
-  else {
-    document.getElementById("none").disabled = false;
-  }
-}
-
-// -------------------------error messages ids -----------------------------
-
-const nmsg = document.getElementById("nmsg")
-const dmsg = document.getElementById("dmsg")
-const hmsg = document.getElementById("hmsg")
-const hdmsg = document.getElementById("hdmsg")
-const hnmsg = document.getElementById("hnmsg")
-const namsg = document.getElementById("namsg")
-const mmsg = document.getElementById("mmsg")
-const smsg = document.getElementById("smsg")
-const kmsg = document.getElementById("kmsg")
-
-
 // ---------------- form submit with validation -------------
 
-var allrt = document.getElementById("alert")// alrt box
-var almsg = document.getElementById("almsg") // art msg
+let allrt = document.getElementById("alert")// alrt box
+let almsg = document.getElementById("almsg") // art msg
+
 
 function submit() {
   // --------------------- collecting data -------------------
-  const naam = document.getElementById("name").value
 
-  const clh = document.getElementById("clh").checked ? document.getElementById("clh").value : "";
-  const cln = document.getElementById("cln").checked ? document.getElementById("cln").value : "";
-  const cld = document.getElementById("cld").checked ? document.getElementById("cld").value : "";
+  const msjid = document.getElementById("name").value
 
-  const subah = document.getElementById("subah").checked ? document.getElementById("subah").value + "،" : "";
-  const dopahar = document.getElementById("dopahar").checked ? document.getElementById("dopahar").value + "،" : "";
-  const sham = document.getElementById("sham").checked ? document.getElementById("sham").value + "،" : "";
-  const hc = document.getElementById("hc").checked ? document.getElementById("hc").value + "،" : "";
+  const st1 = document.getElementById("st1").value !== "" ? document.getElementById("st1").value : "";
+  const st2 = document.getElementById("st2").value !== "" ? document.getElementById("st2").value : "";
+  const st3 = document.getElementById("st3").value !== "" ? document.getElementById("st3").value : "";
+  const st4 = document.getElementById("st4").value !== "" ? document.getElementById("st4").value : "";
+  const st5 = document.getElementById("st5").value !== "" ? document.getElementById("st5").value : "";
 
-  const missed = document.getElementById("missed").checked ? document.getElementById("missed").value + "،" : "";
+  const st001 = document.querySelector('input[name="st1"]:checked') ? document.querySelector('input[name="st1"]:checked').value : "";
+  const st002 = document.querySelector('input[name="st2"]:checked') ? document.querySelector('input[name="st2"]:checked').value : "";
+  const st003 = document.querySelector('input[name="st3"]:checked') ? document.querySelector('input[name="st3"]:checked').value : "";
+  const st004 = document.querySelector('input[name="st4"]:checked') ? document.querySelector('input[name="st4"]:checked').value : "";
+  const st005 = document.querySelector('input[name="st5"]:checked') ? document.querySelector('input[name="st5"]:checked').value : "";
 
-  const hazir = document.getElementById("dhazir").checked ? document.getElementById("dhazir").value + "،" : "";
-  const gherhazir = document.getElementById("dgherhazir").checked ? document.getElementById("dgherhazir").value + "،" : "";
-  const dc = document.getElementById("dc").checked ? document.getElementById("dc").value + "،" : "";
-
-  const nsubah = document.getElementById("nsubah").checked ? document.getElementById("nsubah").value + "،" : ""
-  const ndopahar = document.getElementById("ndopahar").checked ? document.getElementById("ndopahar").value + "،" : ""
-  const nc = document.getElementById("nc").checked ? document.getElementById("nc").value + "،" : ""
-
-  const nmissed = document.getElementById("nmissed").checked ? document.getElementById("nmissed").value : ""
-
-  const fajr = document.getElementById("fajr").checked ? document.getElementById("fajr").value + "،" : "";
-  const zuhr = document.getElementById("zuhr").checked ? document.getElementById("zuhr").value + "،" : "";
-  const asr = document.getElementById("asr").checked ? document.getElementById("asr").value + "،" : "";
-  const maghrib = document.getElementById("maghrib").checked ? document.getElementById("maghrib").value + "،" : "";
-  const isha = document.getElementById("isha").checked ? document.getElementById("isha").value + "،" : "";
-
-  const none = document.getElementById("none").checked ? document.getElementById("none").value + "،" : "";
-
-  const kiya = document.getElementById("kiya").checked ? document.getElementById("kiya").value + "،" : ""
-  const nahin_kiya = document.getElementById("nahin_kiya").checked ? document.getElementById("nahin_kiya").value + "،" : ""
-
-  const bdhe = document.getElementById("bdhe").checked ? document.getElementById("bdhe").value + "،" : ""
-  const nahin_bdhe = document.getElementById("nahin_bdhe").checked ? document.getElementById("nahin_bdhe").value + "،" : ""
-
-  const k_kiya = document.getElementById("k_kiya").checked ? document.getElementById("k_kiya").value + "،" : ""
-  const k_nahin_kiya = document.getElementById("k_nahin_kiya").checked ? document.getElementById("k_nahin_kiya").value + "،" : ""
+  const p1 = document.getElementById("st1").value !== "" ? document.getElementById("st01").value + "," : "";
+  const p2 = document.getElementById("st2").value !== "" ? document.getElementById("st02").value + "," : "";
+  const p3 = document.getElementById("st3").value !== "" ? document.getElementById("st03").value + "," : "";
+  const p4 = document.getElementById("st4").value !== "" ? document.getElementById("st04").value + "," : "";
+  const p5 = document.getElementById("st5").value !== "" ? document.getElementById("st05").value + "," : "";
 
   // --------------------taking form data to an object --------------------
 
-  const formdata = {
-    naam: naam,
-    class: clh + cln + cld,
-    hazri: subah + dopahar + sham + missed + hazir + gherhazir + nsubah + ndopahar + nmissed + hc + dc + nc,
-    namaz: fajr + zuhr + asr + maghrib + isha + none,
-    tayyari: kiya + nahin_kiya,
-    asbaq: bdhe + nahin_bdhe,
-    khidmat: k_kiya + k_nahin_kiya,
+
+  const names = {
+    st01: st1 + st001 + " " + p1,
+    st02: st2 + st002 + " " + p2,
+    st03: st3 + st003 + " " + p3,
+    st04: st4 + st004 + " " + p4,
+    st05: st5 + st005 + " " + p5
   }
+
+  const formdata = {
+    msjid: msjid,
+    names: names.st01 + names.st02 + names.st03 + names.st04 + names.st05,
+  }
+
   //  -------------------------- validating form details and throwing errors in error ids -------------------
-  if (formdata.naam.length == "") {
+  console.log(formdata.msjid)
+  console.log(formdata.names)
+  /*
+  if (formdata.name == "0") {
     nmsg.innerHTML = "براہ کرم نام چنیں", window.location.hash = "#current-time", setTimeout(function () {
       nmsg.innerHTML = ""
     }, 5000)
@@ -329,4 +188,6 @@ function okay() {
   allrt.classList.add("hidden")
   almsg.classList.remove("text-success");
   almsg.classList.remove("text-danger");
+}
+*/
 }
