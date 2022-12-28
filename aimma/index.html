@@ -20,18 +20,18 @@
     <title>وفاق المساجد ائمّہ</title>
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" onload="input()">
     <div class="loader-container text-center" id="loader">
         <div class="spinner"></div>
         <div class="msg">........ تفصیل جمع کیا جا رہا ہے</div>
     </div>
     <div class="container">
-        <div class="my-3 mx-1">
+        <!-- <div class="my-3 mx-1">
             <p class="head">وقت</p>
-            <h5 type="datetime" desabled class="text-center text-deeniyat" name="time" id="current-time" value="">
+            <h5 class="text-center text-deeniyat"id="current-time" value="">
             </h5>
             <hr>
-        </div>
+        </div> -->
         <!-- ---------------name masajid----------- -->
         <div class="my-6 mx-1">
             <p id="nmmsg" class="text-danger text-center"></p>
@@ -57,50 +57,51 @@
                 <p id="ntmsg" class="text-danger text-center"></p>
                 <p class="form-label head my-3 fe">Name of participants</p>
                 <div class="my-3">
-                    <div class="my-6 text-center">
+                    <div class="my-6 text-center" onclick="checkif()">
                         <input type="text" class="text-end form-control" id="st1" placeholder="Student1">
-                        <p class="fe">Select participants parent and name</p>
-                        <input type="radio" name="st1" value="بن"><label for="st1">walid</label>
+                        <p class="fe" id="fname">Select participants parent and name</p>
+                        <input type="radio" name="st1" value=" بن "><label for="st1">walid</label>
                         <input type="radio" name="st1" value=""><label for="st1">sarparast</label>
+                        <p id="fnm" class="text-danger text-center"></p>
                         <input type="text" class="text-end form-control" id="st01" placeholder="Parent fo st1">
                     </div>
                     <hr>
                 </div>
                 <div class="my-3">
-                    <div class="my-6 text-center">
+                    <div class="my-6 text-center" onclick="checkif()">
                         <input type="text" class="text-end form-control" id="st2" placeholder="Student2">
                         <p class="fe">Select participants parent and name</p>
-                        <input type="radio" name="st2" value="بن"><label for="st2">walid</label>
+                        <input type="radio" name="st2" value=" بن "><label for="st2">walid</label>
                         <input type="radio" name="st2" value=""><label for="st2">sarparast</label>
                         <input type="text" class="text-end form-control" id="st02" placeholder="Parent fo st2">
                     </div>
                     <hr>
                 </div>
                 <div class="my-3">
-                    <div class="my-6 text-center">
+                    <div class="my-6 text-center" onclick="checkif()">
                         <input type="text" class="text-end form-control" id="st3" placeholder="Student2">
                         <p class="fe">Select participants parent and name</p>
-                        <input type="radio" name="st3" value="بن"><label for="st3">walid</label>
+                        <input type="radio" name="st3" value=" بن "><label for="st3">walid</label>
                         <input type="radio" name="st3" value=""><label for="st3">sarparast</label>
                         <input type="text" class="text-end form-control" id="st03" placeholder="Parent fo st3">
                     </div>
                     <hr>
                 </div>
                 <div class="my-3">
-                    <div class="my-6 text-center">
+                    <div class="my-6 text-center" onclick="checkif()">
                         <input type="text" class="text-end form-control" id="st4" placeholder="Student2">
                         <p class="fe">Select participants parent and name</p>
-                        <input type="radio" name="st4" value="بن"><label for="st4">walid</label>
+                        <input type="radio" name="st4" value=" بن "><label for="st4">walid</label>
                         <input type="radio" name="st4" value=""><label for="st4">sarparast</label>
                         <input type="text" class="text-end form-control" id="st04" placeholder="Parent fo st4">
                     </div>
                     <hr>
                 </div>
                 <div class="my-3">
-                    <div class="my-6 text-center">
+                    <div class="my-6 text-center" onclick="checkif()">
                         <input type="text" class="text-end form-control" id="st5" placeholder="Student2">
                         <p class="fe">Select participants parent and name</p>
-                        <input type="radio" name="st5" value="بن"><label for="st5">walid</label>
+                        <input type="radio" name="st5" value=" بن "><label for="st5">walid</label>
                         <input type="radio" name="st5" value=""><label for="st5">sarparast</label>
                         <input type="text" class="text-end form-control" id="st05" placeholder="Parent fo st5">
                     </div>
@@ -112,7 +113,7 @@
             کریں</button>
     </div>
     <!-- -------------------alert box------------------- -->
-    <div class="card my-5 mx-5 text-center align-self-center hidden" id="alert">
+    <div class="card my-5 text-center align-self-center hidden" id="alert">
         <div class="card-body">
             <h5 class="card-title text-black">ہوشیار</h5>
             <hr style="color: black;">
@@ -125,14 +126,12 @@
     <!-- </div> -->
     <!-- --------------------- main form ------------------ -->
     <form action="submit" name="submit-to-google-sheet" style="display: none;">
-        <input type="text" name="Time" id="time">
-        <input type="text" name="Name" id="nname">
-        <input type="text" name="Class" id="nclass">
-        <input type="text" name="Hazri" id="nattendance">
-        <input type="text" name="Namaz" id="nnamaz">
-        <input type="text" name="Tayyari" id="ntayyari">
-        <input type="text" name="Asbaq" id="nasbaq">
-        <input type="text" name="Khidmat" id="nkhidmat">
+        <input type="text" name="Masjid" id="Masjid">
+        <input type="text" name="Participant1" id="Participant1">
+        <input type="text" name="Participant2" id="Participant2">
+        <input type="text" name="Participant3" id="Participant3">
+        <input type="text" name="Participant4" id="Participant4">
+        <input type="text" name="Participant5" id="Participant5">
         <button type="submit" id="submit">Submit</button>
     </form>
     <script src="script.js"></script>
