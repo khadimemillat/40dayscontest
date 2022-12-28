@@ -20,7 +20,7 @@
     <title> participants وفاق المساجد</title>
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" onload="input()">
     <!-- <div class="col-md-6"> -->
     <div class="loader-container text-center" id="loader">
         <div class="spinner"></div>
@@ -32,7 +32,7 @@
             <span>Khadim-e-Millat Welfare Foundation</span>
         </h1>
         <h3 class="text-center my-4 text-deeniyat">
-        <span>Idarah Wafaqul Masajid</span>
+            <span>Idarah Wafaqul Masajid</span>
         </h3>
         <div class="text-center">
             <img class="logo" src="../media/images/logo.png" alt="Logo">
@@ -74,7 +74,8 @@
     <div class="col-md-6 my-3 mx-1">
         <hr>
         <p class="head">وقت</p>
-        <h5 class="text-center text-deeniyat"id="current-time">
+        <h5 class="text-center text-deeniyat" id="current-time">
+            00:00:00
         </h5>
         <hr>
         <p class="head fe">Day of Contest</p>
@@ -85,8 +86,8 @@
         <p id="nmmsg" class="text-danger text-center"></p>
         <p class="form-label head">مسجد کا نام</p>
         <select id="name" name="name" class="form-select" onchange="visible()">
-            <option value="" selected>اپنی مسجد کا نام چنیں</option>
-            <option value="مسجد مولانا افتخار صاحب" selected>مسجد مولانا افتخار صاحب</option>
+            <option value=" " selected>اپنی مسجد کا نام چنیں</option>
+            <option value="مسجد مولانا افتخار صاحب">مسجد مولانا افتخار صاحب</option>
             <option value="msjid 2">msjid 2</option>
             <option value="msjid 3">msjid 3</option>
             <option value="msjid 4">msjid 4</option>
@@ -97,147 +98,154 @@
             <option value="msjid 9">msjid 9</option>
             <option value="msjid 10">msjid 10</option>
         </select>
-
         <hr>
     </div>
-    <!-- --------------------- participants name----------------- -->
-    <div class="col-md-6 my-3 mx-1">
-        <p id="nmsg" class="text-danger text-center"></p>
-        <p class="form-label head hide" id="pn">بچّہ کا نام</p>
-        <select id="مسجد مولانا افتخار صاحب" class="hide form-select">
-            <option value="0" selected>مسجد مولانا افتخار صاحب</option>
-            <option value="Student1">Student1</option>
-            <option value="Student2">Student2</option>
-        </select>
-        <select id="msjid 2" class="hide form-select">
-            <option value="0" selected>msjid 2</option>
-        </select>
-        <select id="msjid 3" class="hide form-select">
-            <option value="0" selected>msjid 3</option>
-        </select>
-        <select id="msjid 4" class="hide form-select">
-            <option value="0" selected>msjid 4</option>
-        </select>
-        <select id="msjid 5" class="hide form-select">
-            <option value="0" selected>msjid 5</option>
-        </select>
-        <select id="msjid 6" class="hide form-select">
-            <option value="0" selected>msjid 6</option>
-        </select>
-        <select id="msjid 7" class="hide form-select">
-            <option value="0" selected>msjid 7</option>
-        </select>
-        <select id="msjid 8" class="hide form-select">
-            <option value="0" selected>msjid 8</option>
-        </select>
-        <select id="msjid 9" class="hide form-select">
-            <option value="0" selected>msjid 9</option>
-        </select>
-        <select id="msjid 10" class="hide form-select">
-            <option value="0" selected>msjid 10</option>
-        </select>
-    </div>
+    <div id="details">
+        <!-- --------------------- participants name----------------- -->
+        <div class="col-md-6 my-3 mx-1">
+            <p id="nmsg" class="text-danger text-center"></p>
+            <p class="form-label head" id="pn">بچّہ کا نام</p>
+            <select id="مسجد مولانا افتخار صاحب" class="hide form-select" onchange="chk()">
+                <option value="0" selected>مسجد مولانا افتخار صاحب</option>
+                <option value="Student1">Student1</option>
+                <option value="Student2">Student2</option>
+            </select>
+            <select id="msjid 2" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 2</option>
+            </select>
+            <select id="msjid 3" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 3</option>
+            </select>
+            <select id="msjid 4" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 4</option>
+            </select>
+            <select id="msjid 5" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 5</option>
+            </select>
+            <select id="msjid 6" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 6</option>
+            </select>
+            <select id="msjid 7" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 7</option>
+            </select>
+            <select id="msjid 8" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 8</option>
+            </select>
+            <select id="msjid 9" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 9</option>
+            </select>
+            <select id="msjid 10" class="hide form-select" onchange="chk()">
+                <option value="0" selected>msjid 10</option>
+            </select>
+        </div>
+        <div id="details2">
+            <!-- ---------------Namazen----------- -->
+            <div class="col-md-6 my-3 mx-1">
+                <p id="nmsg" class="text-danger text-center"></p>
+                <p class="head">نماز</p>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="فجر" type="checkbox" id="fajr"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        فجر
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="ظہر" type="checkbox" id="zuhr"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        ظہر
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="عصر" type="checkbox" id="asr"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        عصر
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="مغرب" type="checkbox" id="maghrib"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        مغرب
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="عشا" type="checkbox" id="isha"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        عشا
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="وتر" type="checkbox" id="vitr"
+                        onclick="desableNone()">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        وتر
+                    </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" name="namaz" value="کوئی بھی نہیں" type="checkbox" id="none"
+                        onclick="namazcheck()">
+                    <label class="form-check-label text-danger" for="gridCheck">
+                        کوئی بھی نہیں
+                    </label>
+                </div>
 
-    <!-- ---------------Namazen----------- -->
-    <div class="col-md-6 my-3 mx-1">
-        <p id="namsg" class="text-danger text-center"></p>
-        <p class="head">نماز</p>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="فجر" type="checkbox" id="fajr" onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                فجر
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="ظہر" type="checkbox" id="zuhr" onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                ظہر
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="عصر" type="checkbox" id="asr" onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                عصر
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="مغرب" type="checkbox" id="maghrib"
-                onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                مغرب
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="عشا" type="checkbox" id="isha" onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                عشا
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="وتر" type="checkbox" id="vitr" onclick="desableNone()">
-            <label class="form-check-label text-success" for="gridCheck">
-                وتر
-            </label>
-        </div>
-        <br>
-        <div class="form-check">
-            <input class="form-check-input" name="namaz" value="کوئی بھی نہیں" type="checkbox" id="none"
-                onclick="namazcheck()">
-            <label class="form-check-label text-danger" for="gridCheck">
-                کوئی بھی نہیں
-            </label>
-        </div>
+                <hr>
+            </div>
+            <!-- ---------------amali mshq----------- -->
+            <div class="col-md-6 my-3 mx-1">
+                <p id="mmsg" class="text-danger text-center"></p>
+                <p class="head">عملی مشقیں</p>
+                <p class="text-center">گھر سے آمد و رفت کے وقت سلام (کم از کم ٥ مرتبہ)</p>
+                <div class="form-check">
+                    <input class="form-check-input" name="Mashq" value="کیا" type="radio" id="m_kiya">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        کیا
+                    </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" name="Mashq" value="نہیں کیا" type="radio" id="m_nahin_kiya">
+                    <label class="form-check-label text-danger" for="gridCheck">
+                        نہیں کیا
+                    </label>
+                </div>
+                <hr>
+            </div>
+            <!-- ---------------bdon ki khidmat----------- -->
+            <div class="col-md-6 my-3 mx-1">
+                <p id="kmsg" class="text-danger text-center"></p>
+                <p class="head">بڑوں کی خدمت</p>
+                <p class="text-center">کم از کم ١٥ منٹ بدنی خدمت</p>
+                <div class="form-check">
+                    <input class="form-check-input" name="Khidmat" value="کیا" type="radio" id="k_kiya">
+                    <label class="form-check-label text-success" for="gridCheck">
+                        کیا
+                    </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" name="Khidmat" value="نہیں کیا" type="radio" id="k_nahin_kiya">
+                    <label class="form-check-label text-danger" for="gridCheck">
+                        نہیں کیا
+                    </label>
+                </div>
+                <hr>
+            </div>
 
-        <hr>
-    </div>
-    <!-- ---------------amali mshq----------- -->
-    <div class="col-md-6 my-3 mx-1">
-        <p id="kmsg" class="text-danger text-center"></p>
-        <p class="head">عملی مشقیں</p>
-        <p class="text-center">گھر سے آمد و رفت کے وقت سلام (کم از کم ٥ مرتبہ)</p>
-        <div class="form-check">
-            <input class="form-check-input" name="khidmat" value="کیا" type="radio" id="k_kiya">
-            <label class="form-check-label text-success" for="gridCheck">
-                کیا
-            </label>
+            <div class="col-md-6 mt-5"> <!-------info-------->
+                <p class="text-danger">
+                    براہ کرم اس فارم کو ٢٤ گھنٹوں میں صرف ایک مرتبہ جمع کریں <br>
+                    ایک سے زیادہ بار جمع کرنے پر اس دن کی کوئی بھی تفصیل شمار نہیں کی جاۓگی
+                </p>
+                <button type="button" class="btn btn-primary my-3 mx-1 container" id="submiting" onclick="submit()">جمع
+                    کریں</button>
+            </div>
         </div>
-        <br>
-        <div class="form-check">
-            <input class="form-check-input" name="khidmat" value="نہیں کیا" type="radio" id="k_nahin_kiya">
-            <label class="form-check-label text-danger" for="gridCheck">
-                نہیں کیا
-            </label>
-        </div>
-        <hr>
-    </div>
-    <!-- ---------------bdon ki khidmat----------- -->
-    <div class="col-md-6 my-3 mx-1">
-        <p id="kmsg" class="text-danger text-center"></p>
-        <p class="head">بڑوں کی خدمت</p>
-        <p class="text-center">کم از کم ١٥ منٹ بدنی خدمت</p>
-        <div class="form-check">
-            <input class="form-check-input" name="khidmat" value="کیا" type="radio" id="k_kiya">
-            <label class="form-check-label text-success" for="gridCheck">
-                کیا
-            </label>
-        </div>
-        <br>
-        <div class="form-check">
-            <input class="form-check-input" name="khidmat" value="نہیں کیا" type="radio" id="k_nahin_kiya">
-            <label class="form-check-label text-danger" for="gridCheck">
-                نہیں کیا
-            </label>
-        </div>
-        <hr>
-    </div>
-
-    <div class="col-md-6 mt-5"> <!-------info-------->
-        <p class="text-danger">
-            براہ کرم اس فارم کو ٢٤ گھنٹوں میں صرف ایک مرتبہ جمع کریں <br>
-            ایک سے زیادہ بار جمع کرنے پر اس دن کی کوئی بھی تفصیل شمار نہیں کی جاۓگی
-        </p>
-        <button type="button" class="btn btn-primary my-3 mx-1 container" id="submiting" onclick="submit()">جمع
-            کریں</button>
     </div>
     <!-- -------------------alert box------------------- -->
     <div class="card my-5 mx-5 text-center align-self-center hidden" id="alert">
@@ -251,15 +259,14 @@
     </div>
     <!-- </div> -->
     <!-- --------------------- main form ------------------ -->
-    <form action="submit" name="submit-to-google-sheet" style="display: none;">
-        <input type="text" name="Time" id="time">
-        <input type="text" name="Name" id="nname">
-        <input type="text" name="Class" id="nclass">
-        <input type="text" name="Hazri" id="nattendance">
-        <input type="text" name="Namaz" id="nnamaz">
-        <input type="text" name="Tayyari" id="ntayyari">
-        <input type="text" name="Asbaq" id="nasbaq">
-        <input type="text" name="Khidmat" id="nkhidmat">
+    <form action="submit" name="submit-to-google-sheet"> <!-- style="display: none;"> --->
+        <input type="text" name="Day" id="fday">
+        <input type="text" name="Time" id="ftime">
+        <input type="text" name="Masjid" id="fmname">
+        <input type="text" name="Participant Name" id="fpname">
+        <input type="text" name="Namaz" id="fnamaz">
+        <input type="text" name="Mashq" id="fmashq">
+        <input type="text" name="Khidmat" id="fkhidmat">
         <button type="submit" id="submit">Submit</button>
     </form>
     <script src="script.js"></script>

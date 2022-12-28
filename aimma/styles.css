@@ -29,7 +29,8 @@ hr {
 }
 
 #names,
-#submiting {
+#submiting,
+#details {
     display: none;
 }
 

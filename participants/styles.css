@@ -7,7 +7,7 @@
     src: url('../media/Jameel_Noori_Nastaliq_Regular.ttf');
 }
 
-.fe{
+.fe {
     font-family: "poppins";
 }
 
@@ -16,7 +16,7 @@ body {
     word-spacing: 2px;
 }
 
-.center{
+.center {
     margin: auto;
 }
 
@@ -28,15 +28,21 @@ hr {
     opacity: .25;
 }
 
-.text-deeniyat{
-    color: #B2D235;
-}
-
-.hide{
+#details,
+#details2,
+#pn {
     display: none;
 }
 
-.show{
+.text-deeniyat {
+    color: #B2D235;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
     display: block;
 }
 
@@ -55,7 +61,7 @@ hr {
     z-index: 1;
 }
 
-#loader{
+#loader {
     display: none;
 }
 
@@ -73,12 +79,14 @@ hr {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
-h1 span, h3 span {
+h1 span,
+h3 span {
     font-family: "poppins";
 }
 
@@ -157,19 +165,21 @@ option {
 }
 
 @media only screen and (max-width: 900px) {
-    .spinner{
+    .spinner {
         margin: 40% auto 50% auto;
     }
-    .center{
+
+    .center {
         margin: auto;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .spinner{
+    .spinner {
         margin: 75% auto 50% auto;
     }
-    .center{
+
+    .center {
         margin: auto;
     }
 }
