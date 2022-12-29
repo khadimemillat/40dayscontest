@@ -74,7 +74,7 @@ function chk() {
   let details2 = document.getElementById("details2")
   if (event.currentTarget.value !== "0") {
     details2.style.display = "block";
-    document.getElementById("fpname").value = event.currentTarget.value
+    document.getElementById("fpname").value = document.querySelector('.show').value
   }
 }
 
@@ -177,21 +177,21 @@ function submit() {
     document.getElementById("fmashq").value = formdata.mashq
     document.getElementById("fkhidmat").value = formdata.khidmat
     document.getElementById("fmname").value = document.getElementById("name").value
-    document.getElementById("fpname").value = document.getElementsByClassName("show").value
+    document.getElementById("fpname").value = document.querySelector('.show').value
 
     // -----------------------form submit script---------------------
 
-    var scriptURL //= 'https://script.google.com/macros/s/AKfycbzicx9kyx33XlGkFx_-l4K9i9ejF5vQV0flkLUsYeprtPRGBAUK5e0g2IxFU9Y-04M1/exec';
-    switch (document.getElementsByClassName("show").value) {
-      case "مسجد مولانا افتخار صاحب":
-        scriptURL = 'https://script.google.com/macros/s/AKfycbzicx9kyx33XlGkFx_-l4K9i9ejF5vQV0flkLUsYeprtPRGBAUK5e0g2IxFU9Y-04M1/exec'
-        break;
-      case 2:
-        scriptURL = ''
-        break;
-      case 3:
-        scriptURL = ''
-        break;
+    let scriptURL //= 'https://script.google.com/macros/s/AKfycbzicx9kyx33XlGkFx_-l4K9i9ejF5vQV0flkLUsYeprtPRGBAUK5e0g2IxFU9Y-04M1/exec';
+    let sval = document.getElementById("name").value
+
+    if (sval == 'مسجد مولانا افتخار صاحب') {
+      scriptURL = 'https://script.google.com/macros/s/AKfycbzicx9kyx33XlGkFx_-l4K9i9ejF5vQV0flkLUsYeprtPRGBAUK5e0g2IxFU9Y-04M1/exec'
+    }
+    else if (sval == '') {
+      scriptURL = ''
+    }
+    else if (sval == '') {
+      scriptURL = ''
     }
     // const scriptURL = 'https://script.google.com/macros/s/AKfycbw8RKLAkdzE7Md3RCHcc6JjDfxe8M-2jUvp9R3qzud4EVvE7epnSbsNty8RrZ83pQij/exec'
     const form = document.forms['submit-to-google-sheet']
